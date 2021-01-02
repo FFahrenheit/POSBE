@@ -1,9 +1,9 @@
 <?php 
     $item = $_GET['item'];
-    $qty = $_GET['price'];
+    $qty = $_GET['qty'];
     $price = $_GET['price'];
     $visit = $_GET['visit'];
-    $total = $qty * $price;
+    $total = floatval($qty) * floatval($price);
 
     $conn = mysqli_connect("localhost","root","","posystem")
     or die ('{"status":100}');

@@ -29,8 +29,7 @@
     $printer->text("Telefono: 33 3834 8590\n");
     
     date_default_timezone_set("America/Mexico_City");
-    $printer->text(date("Y-m-d H:i:s") . "\n");
-
+    //$printer->text(date("Y-m-d H:i:s") . "\n");
 
     if(isset($_GET['pk']))
     {
@@ -43,6 +42,7 @@
         or die ('{"status":101}');
 
         $row = mysqli_fetch_array($results);
+        $printer->text($row['fecha']."\n");
 
         $printer->text("Cuenta: ".$row['clave']."\n");
         $printer->text("Atendido por: ".$row['caja']."\n\n");

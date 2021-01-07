@@ -1,11 +1,11 @@
 <?php 
-    $provider = $_GET['provider'];
-    $cashier = $_GET['cashier'];
+    $name = $_GET['name'];
+    $number = $_GET['number'];
 
     $conn = mysqli_connect("localhost","root","","posystem")
     or die ('{"status":100}');
 
-    $query = "INSERT INTO visita(proveedor,cajero) VALUES ($provider,'$cashier')";
+    $query = "INSERT INTO proveedor(nombre,contacto) VALUES ('$name','$number')";
 
     mysqli_query($conn,$query) or die ('{"status":101}');
 

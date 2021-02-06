@@ -7,7 +7,7 @@
     $query = "SELECT provision.precio as price, provision.proveedor as provider,
     provision.producto as code, producto.descripcion as name, producto.precio as original 
     FROM provision, producto WHERE provision.producto = producto.codigo  AND 
-    provision.proveedor = $provider AND producto.descripcion LIKE '%$name%'";
+    provision.proveedor = $provider AND producto.descripcion LIKE '%$name%' ORDER BY name";
 
     $results = mysqli_query($conn,$query)
     or die ('{"status":101}');

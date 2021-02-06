@@ -5,7 +5,7 @@
     or die ('{"status":100}');
     $query = "SELECT *, 
     (SELECT COUNT(*) FROM provision WHERE provision.producto = producto.codigo AND provision.proveedor = $provider) 
-    as bool FROM producto WHERE codigo LIKE '%$code%' LIMIT 30";
+    as bool FROM producto WHERE codigo LIKE '%$code%' ORDER BY descripcion LIMIT 30 ";
 
     $results = mysqli_query($conn,$query) or die ('{"status":101}');
     $data = array();

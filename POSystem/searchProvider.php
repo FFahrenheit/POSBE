@@ -4,7 +4,7 @@
     or die ('{"status":100}');
 
     $query = "SELECT *, (SELECT COUNT(*) FROM provision WHERE proveedor = clave) as total 
-    FROM proveedor WHERE nombre LIKE '%$name%'";
+    FROM proveedor WHERE nombre LIKE '%$name%' ORDER BY proveedor.nombre";
 
     $results = mysqli_query($conn,$query)
     or die ('{"status":101}');

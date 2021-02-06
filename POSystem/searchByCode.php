@@ -3,7 +3,7 @@
     $conn = mysqli_connect("localhost","root","","posystem")
     or die ('{"status":100}');
 
-    $query = "SELECT * FROM producto WHERE codigo LIKE '$code%' LIMIT 20";
+    $query = "SELECT * FROM producto WHERE codigo LIKE '$code%' ORDER BY descripcion LIMIT 20";
 
     $results = mysqli_query($conn,$query)
     or die ('{"status":101}');

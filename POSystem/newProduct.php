@@ -10,7 +10,11 @@
 
     if($code=="")
     {
-        $code = "(SELECT (SELECT COUNT(*) FROM producto as pr WHERE CHAR_LENGTH(pr.codigo)<8)+1)";    
+        $query = "SELECT (SELECT CAST(codigo AS UNSIGNED) as code FROM 
+        producto WHERE CHAR_LENGTH(producto.codigo)<8 ORDER BY code DESC LIMIT 1) + 1 as NewCode";    
+        $result = mysqli_query($conn,$query) or die ('{"status":101}');
+        $row = mysqli_fetch_array($result);
+        $code = $row['NewCode'];
     }
     else
     {
@@ -20,9 +24,9 @@
     $query = "INSERT INTO producto(codigo,descripcion,stock,especificacion,precio) VALUES 
     ($code,'$name',$stock,'$esp',$price)";
 
-
     mysqli_query($conn,$query) or die ('{"status":101}');
 
-    echo json_encode(array("status"=>200));
+    echo json_encode(array("status"=>200, "code" => $code ));
+    
     mysqli_close($conn);
 ?>
